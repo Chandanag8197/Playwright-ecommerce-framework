@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/LoginPage';
+import { InventoryPage } from '../../pages/InventoryPage';
 
 test('Verify user can login to SauceDemo Successfully', async ({ page }) => {
 
   const loginPage = new LoginPage(page);
 
+  const inventoryPage = new InventoryPage(page);
   // await page.goto('https://www.saucedemo.com/');
 
   // await page.getByPlaceholder('Username').fill('standard_user')
@@ -15,11 +17,19 @@ test('Verify user can login to SauceDemo Successfully', async ({ page }) => {
 
   await loginPage.login_credentials('standard_user', 'secret_sauce')
 
-  console.log(await page.url())
+  await inventoryPage.verifyOnInventoryPage();
 
-  await expect(page).toHaveURL(/inventory/);
-  await expect(page.getByText('Products')).toBeVisible();
+  await inventoryPage.getProductCount();
+
+  await inventoryPage.verifyProductCount(6);
+
+  // console.log(await page.url())
+
+  // await expect(page).toHaveURL(/inventory/);
+  // await expect(page.getByText('Products')).toBeVisible();
 
   // const products = page.locator('.inventory_item')
   // await expect(products).toHaveCount(6);
+
+
 });
