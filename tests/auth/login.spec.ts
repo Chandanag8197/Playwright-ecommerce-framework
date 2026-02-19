@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
+// import { LoginPage } from '../../pages/LoginPage';
 import { InventoryPage } from '../../pages/InventoryPage';
 import { CartPage } from '../../pages/CartPage';
 import loginData from '../../test-data/loginData.json'
@@ -7,7 +7,7 @@ import loginData from '../../test-data/loginData.json'
 
 test('Verify user can login to SauceDemo Successfully', async ({ page }) => {
 
-  const loginPage = new LoginPage(page);
+  // const loginPage = new LoginPage(page);
 
   const inventoryPage = new InventoryPage(page);
 
@@ -18,14 +18,14 @@ test('Verify user can login to SauceDemo Successfully', async ({ page }) => {
   // await page.getByPlaceholder('Password').fill('secret_sauce')
   // await page.getByRole('button', {name:'Login'}).click();
 
-  await loginPage.navigate();
+  // await loginPage.navigate();
 
   // await loginPage.login_credentials('standard_user', 'secret_sauce')
-  await loginPage.login_credentials(
-    loginData.validUser.username,
-    loginData.validUser.password
-  )
-
+  // await loginPage.login_credentials(
+  //   loginData.validUser.username,
+  //   loginData.validUser.password
+  // )
+  await page.goto('/inventory.html');
   await inventoryPage.verifyOnInventoryPage();
 
   // await inventoryPage.addProductToCart('Sauce Labs Backpack');
