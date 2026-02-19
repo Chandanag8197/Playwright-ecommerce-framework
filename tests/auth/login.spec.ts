@@ -1,17 +1,19 @@
-import { test, expect } from '@playwright/test';
+// import { test, expect } from '@playwright/test';
 // import { LoginPage } from '../../pages/LoginPage';
-import { InventoryPage } from '../../pages/InventoryPage';
-import { CartPage } from '../../pages/CartPage';
+// import { InventoryPage } from '../../pages/InventoryPage';
+// import { CartPage } from '../../pages/CartPage';
 import loginData from '../../test-data/loginData.json'
 
+import {test, expect} from '../../fixtures/base.fixture'
 
-test('Verify user can login to SauceDemo Successfully', async ({ page }) => {
+
+test('Verify user can login to SauceDemo Successfully', async ({ page, inventoryPage, cartPage }) => {
 
   // const loginPage = new LoginPage(page);
 
-  const inventoryPage = new InventoryPage(page);
+  // const inventoryPage = new InventoryPage(page);
 
-  const cartPage = new CartPage(page);
+  // const cartPage = new CartPage(page);
   // await page.goto('https://www.saucedemo.com/');
 
   // await page.getByPlaceholder('Username').fill('standard_user')
